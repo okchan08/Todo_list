@@ -1,2 +1,17 @@
 <% provide(:title, "Home") %>
-<h1>Todoリストへようこそ！</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="display-3">TodoListへようこそ</h1>
+      <div class="bs-component">
+        <div class="jumbotron">
+          <p class="lead">Ruby on Railsで実装した予定管理アプリです．</p>
+          <p class="lead">今すぐ登録して使って見ましょう！</p>
+          <p class="lead">
+            <%= link_to "登録", "#", class: "btn btn-primary" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
