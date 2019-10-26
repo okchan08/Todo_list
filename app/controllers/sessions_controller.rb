@@ -15,4 +15,10 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    log_out if logged_in?
+    flash[:info] = "ログアウトしました"
+    redirect_to root_url
+  end
 end

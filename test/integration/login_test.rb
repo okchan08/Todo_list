@@ -30,4 +30,12 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert logged_in?
     assert_equal @user.id, current_user.id
   end
+
+  test "logout" do
+    delete logout_path
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_select "div.alert-info"
+    assert_not logged_in?
+  end
 end
