@@ -15,6 +15,7 @@ class LoginTest < ActionDispatch::IntegrationTest
 
     assert_template 'sessions/new'
     assert_select 'div.alert-danger'
+    assert_not logged_in?
   end
 
   test "login with valid information" do
@@ -26,5 +27,7 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
+    assert logged_in?
+    assert_equal @user.id, current_user.id
   end
 end
