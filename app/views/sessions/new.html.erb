@@ -1,2 +1,10 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% provide(:title, "Login") %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="display-3">ログイン</h1>
+        <%= render 'form' %>
+    </div>
+  </div>
+</div>

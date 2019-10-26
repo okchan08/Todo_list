@@ -1,0 +1,12 @@
+<div class="form-group">
+  <%= form_for(@user, url: login_path) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %>
+  
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %>
+
+    <%= f.submit "Login", class: "btn btn-primary" %>
+  <% end %>
+</div>
