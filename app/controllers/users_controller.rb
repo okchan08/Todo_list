@@ -15,6 +15,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user != current_user
+      @msg = "このページは閲覧できません．"
+      render 'errors/show'
+      return
+    end
     render 'show'
   end
 
