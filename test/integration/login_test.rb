@@ -4,6 +4,7 @@ class LoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
     @other_user = users(:archer)
+    delete logout_path
   end
 
   test "login with invalid information" do
@@ -44,11 +45,26 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert_match msg, response.body
   end
 
-  test "logout" do
-    delete logout_path
-    assert_redirected_to root_url
+  test "successful friendly forwarding when GET login_path with logged in" do
+    get user_path(@user)
+    assert_redirected_to login_path
+    log_in_as(@user)
+    assert_redirected_to user_path(@user)
+  end
+
+  test "friendly forwarding to unauthorized page" do
+    get user_path(@other_user)
+    assert_redirected_to login_path
+    log_in_as(@user)
+    assert_redirected_to user_path(@other_user)
     follow_redirect!
-    assert_select "div.alert-info"
-    assert_not logged_in?
+    assert_select 'div.alert-danger'
+  end
+
+  test "get login_path with logged in should redirect to user_path" do
+    log_in_as(@user)
+    assert is_logged_in?
+    get login_path
+    assert_redirected_to user_path(@user)
   end
 end
