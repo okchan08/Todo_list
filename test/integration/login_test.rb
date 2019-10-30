@@ -33,10 +33,7 @@ class LoginTest < ActionDispatch::IntegrationTest
   end
 
   test "login and access other user page" do
-    get login_path
-    post login_path, params: {
-      session: { email: @user.email, password: "password" }
-    }
+    log_in_as(@user)
 
     assert_equal @user.id, current_user.id
     assert_not_equal @other_user.id, current_user.id
