@@ -1,5 +1,7 @@
 <tr>
-  <th scope="row"><%= link_to task.content, "#" %></th>
-  <th><%= task.deadline.to_s(:date) %></th>
-  <th>status</th>
+  <td scope="row"><%= link_to task.content, "#" %></td>
+  <td><%= task.deadline.to_s(:date) %></td>
+  <td class="badge badge-<%= task_status(task)[:type] %>">
+  <%= task_status(task)[:message] %>
+  </td>
 </tr>
