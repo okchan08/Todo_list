@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker'
 gem 'jquery-rails'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

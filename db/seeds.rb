@@ -21,3 +21,9 @@ User.create!(name: "Example User",
               password: password, password_confirmation: password,
               activated: true, activated_at: Time.zone.now)
 end
+
+users = User.order(:created_at).take(4)
+10.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.tasks.create!(content: content)}
+end
