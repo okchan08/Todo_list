@@ -1,3 +1,5 @@
-<li id="task-<%= task.id %>">
-  <span><%= link_to task.content, "#"%></span>
-</li>
+<tr>
+  <th scope="row"><%= link_to task.content, "#" %></th>
+  <th><%= task.deadline.to_s(:date) %></th>
+  <th>status</th>
+</tr>
