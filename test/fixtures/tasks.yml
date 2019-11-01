@@ -2,12 +2,10 @@
 
 one:
   content: MyText
-  registered_at: 2019-11-01 21:33:57
   deadline: 2019-11-01 21:33:57
   user: one
 
 two:
   content: MyText
-  registered_at: 2019-11-01 21:33:57
   deadline: 2019-11-01 21:33:57
   user: two
