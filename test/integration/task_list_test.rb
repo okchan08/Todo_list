@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TaskListTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:michael)
+    @user = users(:archer)
     log_in_as(@user)
   end
 
@@ -10,8 +10,10 @@ class TaskListTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_template 'users/show'
     tasks = @user.tasks.paginate(page: 1)
-    tasks.each do |t|
-      assert_match t.content, response.body
+    assert_not tasks.empty?
+    tasks.each do |task|
+      assert_match task.content, response.body
+      assert_select "a[href=?]", edit_task_path(task), text: task.content
     end
   end
 end
