@@ -3,7 +3,7 @@ require 'test_helper'
 class TaskTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    @task = @user.tasks.build(content: "What I have to do")
+    @task = @user.tasks.build(content: "What I have to do", deadline: Time.zone.now)
   end
 
   test "should be valid" do
@@ -24,4 +24,10 @@ class TaskTest < ActiveSupport::TestCase
     @task.content = "    "
     assert_not @task.valid?
   end
+
+  test "deadline should be present" do
+    @task.deadline = nil
+    assert_not @task.valid?
+  end
+
 end
