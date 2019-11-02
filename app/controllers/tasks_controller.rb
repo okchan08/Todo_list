@@ -2,9 +2,17 @@ class TasksController < ApplicationController
   before_action :logged_in
   before_action :correct_user, only: [:update, :edit]
   def new
+    @task = current_user.tasks.build(deadline: Time.zone.now)
   end
 
   def create
+    @task = current_user.tasks.build(task_params)
+    if @task.save
+      flash[:success] = "登録しました"
+      redirect_to current_user
+    else
+      render 'new'
+    end
   end
 
   def edit

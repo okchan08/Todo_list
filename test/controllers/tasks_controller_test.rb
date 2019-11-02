@@ -95,4 +95,15 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_select "div.alert-danger"
     assert_equal content_before, @task.content
   end
+
+  test "get new without log in should redirect to login_path" do
+    get new_task_path
+    assert_redirected_to login_path
+  end
+
+  test "get new logged in" do
+    log_in_as(@user)
+    get new_task_path
+    assert_template 'tasks/new'
+  end
 end
