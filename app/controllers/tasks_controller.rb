@@ -12,7 +12,14 @@ class TasksController < ApplicationController
   end
 
   def update
-
+    @task = Task.find(params[:id])
+    if @task.update_attributes(task_params)
+      flash[:success] = "更新しました．"
+      redirect_to edit_task_path(@task)
+    else
+      @task.reload
+      render 'edit'
+    end
   end
 
   private
@@ -26,6 +33,9 @@ class TasksController < ApplicationController
 
     def correct_user
       @task = current_user.tasks.find_by(id: params[:id])
-      redirect_to user_path(current_user) if @task.nil?
+      if @task.nil?
+        flash[:danger] = "不正な操作です．"
+        redirect_to user_path(current_user)
+      end
     end
 end

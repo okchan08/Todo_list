@@ -1,5 +1,5 @@
 <div class="form-group">
-  <%= form_for(@task, url: "#") do |f| %>
+  <%= form_for(@task, url: task_path(@task)) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.label :content, class: "h6"%>
     <%= f.text_field :content, class: "form-control", value: @task.content %>
