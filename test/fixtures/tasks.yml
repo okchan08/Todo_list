@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 10.times do |n| %>
+task_michael<%= n %>:
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 10.days.ago %>
+  deadline: <%= 2.days.since %>
+  user: michael
+<% end %>
+
+<% 10.times do |n| %>
+task_archer<%= n %>:
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 8.days.ago %>
+  deadline: <%= 3.days.since %>
+  user: archer
+<% end %>

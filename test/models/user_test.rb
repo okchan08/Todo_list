@@ -53,4 +53,12 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = "12345"
     assert_not @user.valid?
   end
+
+  test "associated tasks should be deleted" do
+    @user.save
+    @user.tasks.create!(content: "task", deadline: Time.zone.now)
+    assert_difference 'Task.count', -1 do
+      @user.destroy
+    end
+  end
 end

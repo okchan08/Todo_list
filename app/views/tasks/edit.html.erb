@@ -1,0 +1,12 @@
+<% provide(:title, "Edit task") %>
+<% provide(:form_url, task_path(@task)) %>
+<% provide(:btn_txt, "更新") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>タスク修正</h2>
+        <%= render 'form' %>
+        <%= link_to "戻る", user_path(current_user), class: "btn btn-info"%>
+    </div>
+  </div>
+</div>

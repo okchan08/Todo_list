@@ -2,9 +2,26 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      task: タスク
     attributes:
       user:
         name: 名前
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
+      task:
+        content: やること
+        deadline: 期限
+        status: 状況
+  enums:
+    task:
+      status:
+        untouched:
+          type: primary
+          msg: 未処理
+        inprogress:
+          type: info
+          msg: 処理中
+        done:
+          type: danger
+          msg: 完了

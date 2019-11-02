@@ -1,0 +1,12 @@
+<% provide(:title, "Create task") %>
+<% provide(:form_url, tasks_path) %>
+<% provide(:btn_txt, "作成") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>新規タスク作成</h2>
+        <%= render 'form' %>
+        <%= link_to "戻る", user_path(current_user), class: "btn btn-info"%>
+    </div>
+  </div>
+</div>

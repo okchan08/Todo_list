@@ -1,0 +1,7 @@
+<tr>
+  <td scope="row"><%= link_to task.content, edit_task_path(task) %></td>
+  <td><%= task.deadline.to_s(:date) %></td>
+  <td class="badge badge-<%= I18n.t("enums.task.status.#{task.status}.type") %>">
+    <%= I18n.t("enums.task.status.#{task.status}.msg") %>
+  </td>
+</tr>
