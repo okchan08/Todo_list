@@ -23,8 +23,18 @@ User.create!(name: "Example User",
 end
 
 users = User.order(:created_at).take(4)
-10.times do
+4.times do
   content = Faker::Lorem.sentence(word_count: 5)
   deadline = Time.current.since(3.days)
   users.each { |user| user.tasks.create!(content: content, deadline: deadline) }
+end
+4.times do
+  content = Faker::Lorem.sentence(word_count: 5)
+  deadline = Time.current.since(3.days)
+  users.each { |user| user.tasks.create!(content: content, deadline: deadline, status: :inprogress) }
+end
+4.times do
+  content = Faker::Lorem.sentence(word_count: 5)
+  deadline = Time.current.since(3.days)
+  users.each { |user| user.tasks.create!(content: content, deadline: deadline, status: :done) }
 end
