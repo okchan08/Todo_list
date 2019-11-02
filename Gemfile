@@ -31,6 +31,7 @@ gem 'faker'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'enum_help'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

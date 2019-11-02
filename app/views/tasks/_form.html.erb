@@ -1,0 +1,15 @@
+<div class="form-group">
+  <%= form_for(@task, url: "#") do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :content %>
+    <%= f.text_field :content, class: "form-control", value: @task.content %>
+
+    <%= f.label :deadline %>
+    <%= f.date_select :deadline, class: "form-control" %>
+
+    <%= f.label :status %>
+    <%= f.select :status, Task.statuses.keys.map { |k| [I18n.t("enums.task.status.#{k}"), k] }, {}, { class: "custom-select" } %>
+  
+    <%= f.submit "更新", class: "btn btn-primary" %>
+  <% end %>
+</div>
