@@ -11,6 +11,7 @@ class TasksController < ApplicationController
       flash[:success] = "登録しました"
       redirect_to current_user
     else
+      @task.deadline = Time.zone.now
       render 'new'
     end
   end
