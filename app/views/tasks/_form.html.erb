@@ -2,7 +2,7 @@
   <%= form_for(@task, url: yield(:form_url)) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.label :content, class: "h6"%>
-    <%= f.text_field :content, class: "form-control", value: @task.content %>
+    <%= f.text_area :content, class: "form-control", value: @task.content %>
 
     <%= f.label :deadline, class: "h6" %>
     <%= f.text_field :deadline, class: "date-picker form-control", value: @task.deadline.to_s(:date) %>

@@ -4,4 +4,7 @@
   <td class="badge badge-<%= I18n.t("enums.task.status.#{task.status}.type") %>">
     <%= I18n.t("enums.task.status.#{task.status}.msg") %>
   </td>
+  <% unless task.status == "done" %>
+  <td><%= link_to "完了！", task_done_path(task), method: :post %></td>
+  <% end %>
 </tr>

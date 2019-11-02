@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :logged_in
-  before_action :correct_user, only: [:update, :edit]
+  before_action :correct_user, only: [:update, :edit, :done]
   def new
     @task = current_user.tasks.build(deadline: Time.zone.now)
   end
@@ -30,6 +30,16 @@ class TasksController < ApplicationController
       flash[:error] = @task.errors.full_messages
       redirect_to edit_task_path(@task)
     end
+  end
+
+  def done
+    @task = Task.find(params[:id])
+    if @task.update_attributes(status: :done)
+      flash[:success] = "タスク完了！"
+    else
+      flash[:danger] = "エラーが発生しました．時間を置いてからもう一度試してください"
+    end
+      redirect_to user_path(current_user)
   end
 
   private
