@@ -33,6 +33,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_task_path(@task)
     assert_template 'tasks/edit'
+    assert_select 'a[href=?]', user_path(@user)
   end
 
   test "edit path for other user should redirect to user page" do
@@ -89,6 +90,8 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
         deadline: @task.deadline
       }
     }
+    assert_redirected_to edit_task_path(@task)
+    follow_redirect!
     assert_select "div.alert-danger"
     assert_equal content_before, @task.content
   end

@@ -18,7 +18,8 @@ class TasksController < ApplicationController
       redirect_to edit_task_path(@task)
     else
       @task.reload
-      render 'edit'
+      flash[:error] = @task.errors.full_messages
+      redirect_to edit_task_path(@task)
     end
   end
 

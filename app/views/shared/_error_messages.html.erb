@@ -1,4 +1,4 @@
-<% if object.errors.any? %>
+<% if object.errors.any? && !flash[:error].present? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
       入力に誤りがあります
@@ -6,6 +6,17 @@
     <ul>
       <% object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% elsif flash[:error].present? %>
+  <div id="flash_error_explanation">
+    <div class="alert alert-danger">
+      入力に誤りがあります
+    </div>
+    <ul>
+      <% flash[:error].each do |e| %>
+        <li><%= e %></li>
       <% end %>
     </ul>
   </div>
