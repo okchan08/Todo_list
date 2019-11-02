@@ -1,13 +1,13 @@
 <div class="form-group">
   <%= form_for(@task, url: "#") do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <%= f.label :content %>
+    <%= f.label :content, class: "h6"%>
     <%= f.text_field :content, class: "form-control", value: @task.content %>
 
-    <%= f.label :deadline %>
-    <%= f.date_select :deadline, class: "form-control" %>
+    <%= f.label :deadline, class: "h6" %>
+    <%= f.text_field :deadline, class: "date-picker form-control", value: @task.deadline.to_s(:date) %>
 
-    <%= f.label :status %>
+    <%= f.label :status, class: "h6" %>
     <%= f.select :status,
                   options_for_select(Task.statuses.keys.map { |k| [I18n.t("enums.task.status.#{k}.msg"), k] }, @task.status),
                   {},{ class: "custom-select" } %>
